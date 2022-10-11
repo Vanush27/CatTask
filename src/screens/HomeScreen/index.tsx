@@ -22,7 +22,10 @@ const HomeScreen: FC<IFavoriteScreenProps> = () => {
     );
     await apiCall
       .then((response) => response.data)
-      .then((res) => storeData([...data, ...res]))
+      .then((res) => {
+        storeData([...data, ...res]);
+        return setData([...data, ...res]);
+      })
       .catch((error) => {
         console.log(error);
       });
