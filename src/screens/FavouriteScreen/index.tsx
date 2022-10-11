@@ -5,6 +5,7 @@ import { Button, Text, View } from 'react-native';
 
 const FavouriteScreen: FC<IFavoriteScreenProps> = ({}) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase, 'FavouritesScreen'>>();
+
   return (
     <View>
       <Text> Favourite Screen Screen </Text>

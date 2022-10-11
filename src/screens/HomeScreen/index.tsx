@@ -17,6 +17,7 @@ const HomeScreen: FC<IFavoriteScreenProps> = () => {
   const [page, setPage] = useState<number>(1);
 
   const fetchData = async () => {
+    await getData();
     const apiCall = axios.get<CatProps[]>(
       `https://api.thecatapi.com/v1/images/search?limit=10&page=${page}&category_ids=1`
     );
