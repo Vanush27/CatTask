@@ -1,17 +1,21 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import useCachedResources from "./hooks/useCachedResources";
-import Navigation from "./navigation";
+import React from 'react';
+
+import useCachedResources from './src/hooks/useCachedResources';
+import { RootNavigator } from './src/navigation';
 
 export default function App() {
-
   const isLoaded = useCachedResources();
 
   if (isLoaded) {
     return (
-        <>
-          <Navigation />
-          <StatusBar style="auto" />
-        </>
+      <>
+        <StatusBar style="auto" />
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </>
     );
   } else {
     return null;
