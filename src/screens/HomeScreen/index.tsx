@@ -24,11 +24,9 @@ const HomeScreen: FC = () => {
     setDisable(getAllId);
   };
 
-  // https://api.thecatapi.com/v1/images/0XYvRd7oD
-
   const fetchData = async () => {
     const apiCall = axios.get<CatTypes[]>(
-      `https://api.thecatapi.com/v1/images/search?limit=10&page=${page}&breed_ids=beng`
+      `https://api.thecatapi.com/v1/images/search?limit=10&page=${page}`
     );
     await apiCall
       .then((response) => response.data)

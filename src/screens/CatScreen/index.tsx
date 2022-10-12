@@ -2,20 +2,30 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Text, View, Image } from 'react-native';
 
-import { CatTypes } from '../../types/types';
+import { CatTypes, TBreeds } from '../../types/types';
 import { styles } from './styles';
 
 const CatScreen = (props: any) => {
-  const [infoCat, setInfoCat] = useState([]);
+  const [infoCat, setInfoCat] = useState<CatTypes | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const [countryFlag, setCountryFlag] = useState([]);
 
   const catItem = props.route?.params;
 
   const fetchCatInformation = async () => {
-    const apiCall = axios.get<CatTypes[]>(`https://api.thecatapi.com/v1/images/${catItem.id}`);
+    const apiCall = axios.get(`https://api.thecatapi.com/v1/images/${catItem.id}`);
     await apiCall
-      .then((response) => response.data)
-      .then((res) => setInfoCat(res?.breeds))
+      .then((response) => {
+        setLoading(true);
+        if (response.data) {
+          setLoading(false);
+          return response.data;
+        }
+      })
+      .then((res) => {
+        console.log(res, 'res');
+        setInfoCat(res);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -40,16 +50,18 @@ const CatScreen = (props: any) => {
 
   return (
     <>
-      {catItem &&
-        infoCat.map((info) => (
-          <View style={styles.item}>
+      {loading ? (
+        <Text>Loading...</Text>
+      ) : infoCat?.breeds ? (
+        infoCat?.breeds?.map((info, index) => (
+          <View key={index} style={styles.item}>
             <View>
               <Text> CatScreen </Text>
               <Text>"name" : {info?.name}</Text>
               <Image
                 style={styles.stretch}
                 source={{
-                  uri: `${catItem?.url}`,
+                  uri: `${infoCat?.url}`,
                 }}
               />
               <Text style={{ padding: 10 }}> {info?.description}</Text>
@@ -59,7 +71,12 @@ const CatScreen = (props: any) => {
             </View>
             {/*<View>{countryFlag?.filter((c) => c === info?.country_code)}</View>*/}
           </View>
-        ))}
+        ))
+      ) : (
+        <View>
+          <Text>No information for breeds</Text>
+        </View>
+      )}
     </>
   );
 };
