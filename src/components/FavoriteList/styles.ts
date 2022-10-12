@@ -1,6 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+  container: {
+    borderColor: '#2259b9',
+    marginTop: 6,
+    paddingVertical: 8,
+    borderWidth: 2,
+  },
+
   item: {
     marginTop: 6,
     paddingVertical: 8,
@@ -14,9 +21,8 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   stretch: {
-    scale: 0.6,
-    width: 100,
-    height: 100,
-    resizeMode: 'cover',
+    width: '100%',
+    borderTopEndRadius: 6,
+    borderTopStartRadiusRadius: 6,
   },
 });

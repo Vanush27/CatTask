@@ -10,8 +10,8 @@ const CatScreen = (props: any) => {
     catItem && (
       <View style={styles.item}>
         <View>
+          <Text> CatScreen </Text>
           <Text>"name" : {catItem?.id}</Text>
-          <Text>"width" : {catItem?.width}</Text>
           <Image
             style={styles.stretch}
             source={{

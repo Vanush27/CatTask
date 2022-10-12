@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import axios from 'axios';
@@ -6,26 +5,35 @@ import React, { FC, useEffect, useState } from 'react';
 import { FlatList, Text, View, Pressable } from 'react-native';
 
 import { CatCard } from '../../components';
-import { getData, storeData } from '../../storage';
-import { CatProps } from '../../types/types';
-import { IFavoriteScreenProps } from '../FavouriteScreen';
+import { getData } from '../../storage';
+import { CatTypes } from '../../types/types';
 import { styles } from './styles';
 
-const HomeScreen: FC<IFavoriteScreenProps> = () => {
+const HomeScreen: FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase, 'HomeScreen'>>();
-  const [data, setData] = useState<CatProps[]>([]);
+  const [data, setData] = useState<CatTypes[] | []>([]);
   const [page, setPage] = useState<number>(1);
 
+  const [favoriteList, setFavoriteList] = useState<[]>([]);
+
+  const [disable, setDisable] = useState<[]>([]);
+
+  const getFavList = async () => {
+    const getFavoriteList = (await getData()) || [];
+    const getAllId = getFavoriteList?.map((item: any) => item.id);
+    setDisable(getAllId);
+  };
+
+  // https://api.thecatapi.com/v1/images/0XYvRd7oD
+
   const fetchData = async () => {
-    await getData();
-    const apiCall = axios.get<CatProps[]>(
+    const apiCall = axios.get<CatTypes[]>(
       `https://api.thecatapi.com/v1/images/search?limit=10&page=${page}&category_ids=1`
     );
     await apiCall
       .then((response) => response.data)
       .then((res) => {
-        storeData([...data, ...res]);
-        return setData([...data, ...res]);
+        setData([...data, ...res]);
       })
       .catch((error) => {
         console.log(error);
@@ -36,35 +44,39 @@ const HomeScreen: FC<IFavoriteScreenProps> = () => {
     fetchData();
   }, [page]);
 
-  // const keyExtractor = ({ id }: { id: string }) => {
-  //   console.warn(id);
-  //   return id;
-  // };
+  useEffect(() => {
+    getFavList();
+  }, [favoriteList]);
 
-  const keyExtractor = () => {
-    return (
-      new Date().getTime().toString() +
-      Math.floor(Math.random() * Math.floor(new Date().getTime())).toString()
-    );
+  const keyExtractor = (item: CatTypes) => {
+    return item.id;
   };
 
-  // const fetchMoreData = () => {
-  //     if (!)
-  // setPage(page + 1)
-  // }
+  const fetchMoreData = () => {
+    setPage(page + 1);
+  };
+
+  const dataToRender = data.filter(
+    (value, index, self) => index === self.findIndex((t) => t.id === value.id)
+  );
 
   return (
     <View style={styles.container}>
       <Text style={styles.textHeader}>CAT LIST</Text>
       <FlatList
-        data={data}
+        data={dataToRender}
         maxToRenderPerBatch={5}
         initialNumToRender={10}
-        onEndReached={() => setPage(page)}
+        onEndReached={fetchMoreData}
         onEndReachedThreshold={0.5}
         renderItem={({ item }) => (
           <Pressable onPress={() => navigation.navigate('CatScreen', item)}>
-            <CatCard item={item} />
+            <CatCard
+              item={item}
+              setFavoriteList={setFavoriteList}
+              catList={data}
+              isDisabled={disable.includes(item.id as never)}
+            />
           </Pressable>
         )}
         keyExtractor={keyExtractor}

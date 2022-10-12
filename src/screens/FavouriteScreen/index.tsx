@@ -1,17 +1,34 @@
-import { ParamListBase, useNavigation } from '@react-navigation/native';
+import { ParamListBase, useFocusEffect, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { FC } from 'react';
-import { Button, Text, View } from 'react-native';
+import React, { FC, useState } from 'react';
+import { Button, ScrollView, Text, View } from 'react-native';
+
+import { FavoriteList } from '../../components';
+import { getData } from '../../storage';
 
 const FavouriteScreen: FC<IFavoriteScreenProps> = ({}) => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase, 'FavouritesScreen'>>();
+  const [favList, setFavList] = useState([]);
+  const getFavoriteList = async () => {
+    try {
+      const getFavoriteListFromStorage = await getData();
+      setFavList(getFavoriteListFromStorage);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useFocusEffect(() => {
+    getFavoriteList();
+  });
 
   return (
-    <View>
-      <Text> Favourite Screen Screen </Text>
-      <Text> Favourite screen </Text>
+    <>
       <Button title="Go to Home" onPress={() => navigation.navigate('HomeScreen')} />
-    </View>
+      <ScrollView>
+        <FavoriteList element={favList} />
+      </ScrollView>
+    </>
   );
 };
 

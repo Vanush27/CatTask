@@ -1,4 +1,4 @@
-export type CatProps = {
+export type CatTypes = {
   id: string;
   url: string;
   width: number;
