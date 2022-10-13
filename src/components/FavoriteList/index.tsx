@@ -1,13 +1,16 @@
 import { AntDesign } from '@expo/vector-icons';
+import { ParamListBase, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
-import { Image, Text, View } from 'react-native';
-import { v4 as uuidv4 } from 'uuid';
+import { Image, Pressable, Text, View } from 'react-native';
 
 import { getData, storeData } from '../../storage';
 import { CatTypes } from '../../types/types';
 import { styles } from './styles';
 
 const FavoriteList = ({ element }: { element: CatTypes[] }) => {
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase, 'HomeScreen'>>();
+
   const deleteToFavorites = async (id: string) => {
     try {
       const getFavoriteList = (await getData()) || [];
@@ -23,12 +26,15 @@ const FavoriteList = ({ element }: { element: CatTypes[] }) => {
         return (
           <View key={element.id + element.url} style={styles.container}>
             <Text> "name" : {element?.id}</Text>
-            <Image
-              style={[styles.stretch, { height: element.height }]}
-              source={{
-                uri: `${element?.url}`,
-              }}
-            />
+            <Pressable onPress={() => navigation.navigate('CatScreen')}>
+              <Image
+                style={styles.stretch}
+                source={{
+                  uri: `${element?.url}`,
+                }}
+              />
+            </Pressable>
+
             <AntDesign
               name="delete"
               size={24}

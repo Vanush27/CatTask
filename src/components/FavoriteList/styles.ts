@@ -21,8 +21,10 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   stretch: {
-    width: '100%',
+    width: '98%',
+    height: 300,
     borderTopEndRadius: 6,
     borderTopStartRadiusRadius: 6,
+    margin: 'auto',
   },
 });

@@ -26,7 +26,8 @@ const HomeScreen: FC = () => {
 
   const fetchData = async () => {
     const apiCall = axios.get<CatTypes[]>(
-      `https://api.thecatapi.com/v1/images/search?limit=10&page=${page}`
+      // `https://api.thecatapi.com/v1/images/search?limit=10&page=${page}`
+      `https://api.thecatapi.com/v1/images/search?limit=10&page=${page}&breed_ids=beng`
     );
     await apiCall
       .then((response) => response.data)

@@ -6,15 +6,17 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#20232a',
     borderRadius: 6,
-    // backgroundColor: '#61dafb',
+
     color: '#20232a',
     fontSize: 30,
     fontWeight: 'bold',
   },
   stretch: {
-    width: '100%',
-    borderTopEndRadius: 6,
-    borderTopStartRadiusRadius: 6,
+    width: '97%',
+    borderRadius: 8,
+    height: 300,
+    margin: 'auto',
+    alignItems: 'center',
   },
   addToFavoritesWrapper: {
     padding: 5,

@@ -14,9 +14,10 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   stretch: {
-    scale: 0.6,
-    width: 100,
-    height: 100,
+    width: '88%',
+    height: 220,
+    margin: 'auto',
+    borderRadius: 8,
     resizeMode: 'cover',
   },
 });
