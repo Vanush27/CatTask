@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { RadioButton } from 'react-native-paper';
+import RadioForm from 'react-native-simple-radio-button';
 
 import { SETTING_WEIGHT_ACTIVE_TYPE } from '../../constants';
 import { dataWeight } from '../../storage';
