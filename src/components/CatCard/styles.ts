@@ -2,22 +2,18 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   item: {
-    margin: 'auto',
-    borderWidth: 20,
-    // borderColor: '#20232a',
-    borderRadius: 6,
-    borderBottomColor: '#20232a',
+    width: '100%',
+    borderBottomWidth: 2,
+    borderRadius: 10,
+    borderBottomColor: '#608cf5',
     justifyContent: 'center',
-    // color: '#20232a',
-    // fontSize: 30,
-    // fontWeight: 'bold',
+    margin: 'auto',
+    padding: 10,
   },
   stretch: {
-    width: '96%',
-    borderRadius: 8,
+    width: '100%',
     height: 300,
-    margin: 'auto',
-    alignItems: 'center',
+    borderRadius: 10,
   },
   addToFavoritesWrapper: {
     padding: 5,
