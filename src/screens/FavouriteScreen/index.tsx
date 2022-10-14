@@ -6,8 +6,7 @@ import { Button, ScrollView } from 'react-native';
 import { FavoriteList } from '../../components';
 import { getData } from '../../storage';
 
-const FavouriteScreen: FC<IFavoriteScreenProps> = ({}) => {
-  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase, 'FavouritesScreen'>>();
+const FavouriteScreen: FC<IFavoriteScreenProps> = () => {
   const [favList, setFavList] = useState([]);
   const getFavoriteList = async () => {
     try {
@@ -24,7 +23,6 @@ const FavouriteScreen: FC<IFavoriteScreenProps> = ({}) => {
 
   return (
     <>
-      <Button title="Go to Home" onPress={() => navigation.navigate('HomeScreen')} />
       <ScrollView>
         <FavoriteList element={favList} />
       </ScrollView>
