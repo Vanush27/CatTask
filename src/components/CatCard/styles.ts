@@ -4,13 +4,9 @@ export const styles = StyleSheet.create({
   item: {
     margin: 'auto',
     borderWidth: 20,
-    // borderColor: '#20232a',
     borderRadius: 6,
     borderBottomColor: '#20232a',
     justifyContent: 'center',
-    // color: '#20232a',
-    // fontSize: 30,
-    // fontWeight: 'bold',
   },
   stretch: {
     width: '96%',

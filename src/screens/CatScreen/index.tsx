@@ -1,7 +1,9 @@
 import { CFormRange } from '@coreui/react';
+import { ParamListBase, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, Button } from 'react-native';
 import CountryFlag from 'react-native-country-flag';
 
 import { StarRating } from '../../components';
