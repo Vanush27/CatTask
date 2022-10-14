@@ -1,12 +1,11 @@
-import { ParamListBase, useFocusEffect, useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useFocusEffect } from '@react-navigation/native';
 import React, { FC, useState } from 'react';
-import { Button, ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 import { FavoriteList } from '../../components';
 import { getData } from '../../storage';
 
-const FavouriteScreen: FC<IFavoriteScreenProps> = () => {
+const FavouriteScreen: FC<IFavoriteScreenProps> = ({}) => {
   const [favList, setFavList] = useState([]);
   const getFavoriteList = async () => {
     try {
@@ -22,11 +21,11 @@ const FavouriteScreen: FC<IFavoriteScreenProps> = () => {
   });
 
   return (
-    <>
+    <View style={{ padding: 10 }}>
       <ScrollView>
         <FavoriteList element={favList} />
       </ScrollView>
-    </>
+    </View>
   );
 };
 

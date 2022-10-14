@@ -1,2 +1,2 @@
-export { default as RootNavigator } from './RootNavigator';
-export { default as BottomTabNavigator } from './BottomTabNavigator';
+export { RootNavigator } from './RootNavigator';
+export { BottomTabNavigator } from './BottomTabNavigator';
