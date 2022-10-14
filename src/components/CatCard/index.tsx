@@ -37,7 +37,7 @@ const CatCard = ({
     <View style={styles.item}>
       <View>
         <Image
-          resizeMode="cover"
+          resizeMode="contain"
           style={styles.stretch}
           source={{
             uri: `${item?.url}`,
