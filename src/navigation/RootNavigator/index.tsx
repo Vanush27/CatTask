@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { CatScreen, SettingScreen } from '../../screens';
-import BottomTabNavigator from '../BottomTabNavigator';
+import { BottomTabNavigator } from '../index';
 
 const Stack = createNativeStackNavigator();
 

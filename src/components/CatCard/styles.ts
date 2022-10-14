@@ -16,6 +16,9 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
   },
   addToFavoritesWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: 5,
   },
 });
