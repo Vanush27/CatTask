@@ -50,6 +50,7 @@ const CatCard = ({
         ) : (
           <Button title="Add to favorites" onPress={() => addToFavorites(item.id)} />
         )}
+
         <AntDesign
           name={isDisabled ? 'star' : 'staro'}
           size={24}

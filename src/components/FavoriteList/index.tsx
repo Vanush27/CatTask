@@ -2,7 +2,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
-import { Image, Pressable, Text, View } from 'react-native';
+import { Image, Pressable, View } from 'react-native';
 
 import { getData, storeData } from '../../storage';
 import { CatTypes } from '../../types/types';

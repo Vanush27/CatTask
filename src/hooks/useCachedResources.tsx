@@ -1,7 +1,7 @@
 import * as Font from 'expo-font';
 import { useEffect, useState } from 'react';
 
-export default function useCachedResources() {
+const useCachedResources = () => {
   const [isLoadingComplete, setIsLoadingComplete] = useState(false);
 
   useEffect(() => {
@@ -20,4 +20,6 @@ export default function useCachedResources() {
     loadResourcesAndDataAsync().then();
   }, []);
   return isLoadingComplete;
-}
+};
+
+export default useCachedResources;
