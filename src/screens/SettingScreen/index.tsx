@@ -5,7 +5,7 @@ import { RadioButtonGroup } from '../../components';
 
 const SettingScreen = () => {
   return (
-    <View>
+    <View style={{ padding: 10 }}>
       <RadioButtonGroup />
     </View>
   );

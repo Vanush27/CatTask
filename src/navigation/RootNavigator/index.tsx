@@ -7,10 +7,14 @@ const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Home" component={BottomTabNavigator} options={{ headerShown: false }} />
+    <Stack.Screen
+      name="HomeScreen"
+      component={BottomTabNavigator}
+      options={{ headerShown: false }}
+    />
     <Stack.Screen name="CatScreen" component={CatScreen} options={{ headerShown: true }} />
-    <Stack.Screen name="SettingScreen" component={SettingScreen} options={{ headerShown: true }} />
+    <Stack.Screen name="SettingScreen" component={SettingScreen} options={{ headerShown: false }} />
   </Stack.Navigator>
 );
 
-export default RootNavigator;
+export { RootNavigator };
