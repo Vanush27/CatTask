@@ -5,14 +5,25 @@ import { Text, View, Image } from 'react-native';
 import CountryFlag from 'react-native-country-flag';
 
 import { StarRating } from '../../components';
+import { getDataWeight } from '../../storage';
 import { CatTypes } from '../../types/types';
 import { styles } from './styles';
 
 const CatScreen = (props: any) => {
+  const catItem = props.route?.params;
+
   const [infoCat, setInfoCat] = useState<CatTypes | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [weightType, setWeightType] = useState<string | null>(null);
 
-  const catItem = props.route?.params;
+  const getMetricTypeFromStorage = async () => {
+    try {
+      const weight = await getDataWeight();
+      setWeightType(weight);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const fetchCatInformation = async () => {
     const apiCall = axios.get(`https://api.thecatapi.com/v1/images/${catItem?.id}`);
@@ -21,7 +32,6 @@ const CatScreen = (props: any) => {
         setLoading(true);
         if (response.data) {
           setLoading(false);
-          console.log(response.data);
           return response.data;
         }
       })
@@ -35,6 +45,7 @@ const CatScreen = (props: any) => {
 
   useEffect(() => {
     fetchCatInformation();
+    getMetricTypeFromStorage();
   }, []);
 
   return (
@@ -43,43 +54,26 @@ const CatScreen = (props: any) => {
         <Text>Loading...</Text>
       ) : infoCat?.breeds ? (
         infoCat?.breeds?.map((info, index) => (
-          <View key={index} style={styles.item}>
+          <View key={index} style={styles.cat_item_info}>
             <View>
               <Text> CatScreen </Text>
-              <View
-                style={{
-                  padding: 10,
-                  justifyContent: 'flex-end',
-                  flexDirection: 'row',
-                }}>
-                <Text
-                  style={{
-                    marginRight: 10,
-                  }}>
-                  {info?.name}
-                </Text>
+              <View style={styles.cat_item_view}>
+                <Text style={{ marginRight: 10 }}>{info?.name}</Text>
                 <CountryFlag isoCode={info?.country_code} size={20} />
               </View>
-
               <Image
                 style={styles.stretch}
                 source={{
                   uri: `${infoCat?.url}`,
                 }}
               />
-              <Text style={{ padding: 10 }}> {info?.description}</Text>
-
+              <Text style={styles.text_padding}> {info?.description}</Text>
               <StarRating activeStars={info?.energy_level} />
-
               <Text style={{ padding: 3 }}> life span</Text>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  margin: 'auto',
-                  justifyContent: 'center',
-                }}>
+              <View style={styles.cat_life_span}>
                 <Text>0</Text>
                 <CFormRange
+                  onChange={() => console.log('CFormRange')}
                   id="customRange1"
                   value={Math.ceil(
                     Number(info?.life_span.replace('-', '').replace('  ', '')) / 100
@@ -91,12 +85,11 @@ const CatScreen = (props: any) => {
                 <Text>20</Text>
               </View>
 
-              <Text style={{ padding: 10 }}>metric = {info?.weight?.metric}</Text>
-              <Text style={{ padding: 10 }}>imperial = {info?.weight?.imperial}</Text>
-
-              {/*<Text style={{ padding: 10 }}> energy_level = {info?.energy_level}</Text>*/}
-              {/*<Text style={{ padding: 10 }}> country_code = {info?.country_code}</Text>*/}
-              {/*<Text style={{ padding: 10 }}> life_span = {info?.life_span}</Text>*/}
+              {weightType && weightType === 'metric' ? (
+                <Text style={styles.text_padding}>metric = {info?.weight?.metric}</Text>
+              ) : (
+                <Text style={styles.text_padding}>imperial = {info?.weight?.imperial}</Text>
+              )}
             </View>
           </View>
         ))

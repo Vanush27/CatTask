@@ -24,9 +24,8 @@ const FavoriteList = ({ element }: { element: CatTypes[] }) => {
     <>
       {element?.map((element: CatTypes) => {
         return (
-          <View key={element.id + element.url} style={styles.container}>
-            <Text> "name" : {element?.id}</Text>
-            <Pressable onPress={() => navigation.navigate('CatScreen')}>
+          <View key={element.id + element.url} style={styles.favorite_container}>
+            <Pressable onPress={() => navigation.navigate('CatScreen', element)}>
               <Image
                 style={styles.stretch}
                 source={{

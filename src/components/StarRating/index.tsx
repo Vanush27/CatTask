@@ -8,7 +8,7 @@ const StarRating = ({ activeStars }: { activeStars: number }) => {
   return (
     <View style={{ flexDirection: 'row', justifyContent: 'center', padding: 20 }}>
       {[...new Array(totalStars)].map((arr, index) =>
-        index < activeStars ? <StarIcon /> : <StarBorderIcon />
+        index < activeStars ? <StarIcon key={index} /> : <StarBorderIcon key={index} />
       )}
     </View>
   );

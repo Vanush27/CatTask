@@ -1,10 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { FAVORITE_LIST_STORAGE, SETTING_WEIGHT_ACTIVE_TYPE } from '../constants';
 import { CatTypes } from '../types/types';
 
 export const storeData = async (value: CatTypes[]) => {
   try {
-    await AsyncStorage.setItem('favoriteList', JSON.stringify(value));
+    await AsyncStorage.setItem(FAVORITE_LIST_STORAGE, JSON.stringify(value));
   } catch (error: any) {
     console.log(error.message);
   }
@@ -12,7 +13,7 @@ export const storeData = async (value: CatTypes[]) => {
 
 export const getData = async () => {
   try {
-    const value = await AsyncStorage.getItem('favoriteList');
+    const value = await AsyncStorage.getItem(FAVORITE_LIST_STORAGE);
     if (value != null) {
       return JSON.parse(value);
     }
@@ -21,10 +22,21 @@ export const getData = async () => {
   }
 };
 
-export const removeItem = async () => {
+export const dataWeight = async (value: string) => {
   try {
-    await AsyncStorage.removeItem('favoriteList');
+    await AsyncStorage.setItem(SETTING_WEIGHT_ACTIVE_TYPE, JSON.stringify(value));
   } catch (error: any) {
-    console.error(error.message);
+    console.log(error.message);
+  }
+};
+
+export const getDataWeight = async () => {
+  try {
+    const value = await AsyncStorage.getItem(SETTING_WEIGHT_ACTIVE_TYPE);
+    if (value != null) {
+      return JSON.parse(value);
+    }
+  } catch (error: any) {
+    console.log(error.message);
   }
 };

@@ -1,7 +1,7 @@
 import { ParamListBase, useFocusEffect, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { FC, useState } from 'react';
-import { Button, ScrollView, Text, View } from 'react-native';
+import { Button, ScrollView } from 'react-native';
 
 import { FavoriteList } from '../../components';
 import { getData } from '../../storage';
