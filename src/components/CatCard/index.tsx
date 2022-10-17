@@ -35,7 +35,7 @@ const CatCard = ({
 
   return (
     <View style={styles.item}>
-      <View>
+      <View style={styles.image_cat}>
         <Image
           resizeMode="contain"
           style={styles.stretch}

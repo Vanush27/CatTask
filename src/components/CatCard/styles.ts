@@ -8,7 +8,10 @@ export const styles = StyleSheet.create({
     borderBottomColor: '#608cf5',
     justifyContent: 'center',
     margin: 'auto',
-    padding: 10,
+    padding: 5,
+  },
+  image_cat: {
+    padding: 5,
   },
   stretch: {
     width: '100%',
