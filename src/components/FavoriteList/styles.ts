@@ -13,4 +13,8 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     resizeMode: 'cover',
   },
+  delete_btn: {
+    textAlign: 'center',
+    paddingTop: 20,
+  },
 });

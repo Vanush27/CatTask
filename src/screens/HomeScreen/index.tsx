@@ -47,14 +47,6 @@ const HomeScreen: FC = () => {
     getFavList();
   }, [favoriteList]);
 
-  const keyExtractor = (item: CatTypes) => {
-    return (
-      item.id.toString() +
-      new Date().getTime().toString() +
-      Math.floor(Math.random() * Math.floor(new Date().getTime())).toString()
-    );
-  };
-
   const fetchMoreData = () => {
     setPage(page + 1);
   };

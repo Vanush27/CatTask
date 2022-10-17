@@ -55,7 +55,7 @@ const CatCard = ({
           name={isDisabled ? 'star' : 'staro'}
           size={24}
           color="black"
-          style={{ textAlign: 'center' }}
+          style={styles.star_svg}
           onPress={() => setIsClick(!isClick)}
         />
       </View>

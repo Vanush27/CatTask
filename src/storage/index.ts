@@ -23,7 +23,7 @@ export const getData = async () => {
   }
 };
 
-export const dataWeight = async (value: any) => {
+export const dataWeight = async (value: RadioButtonProps[] | string) => {
   try {
     await AsyncStorage.setItem(SETTING_WEIGHT_ACTIVE_TYPE, JSON.stringify(value));
   } catch (error: any) {

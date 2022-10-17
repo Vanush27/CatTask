@@ -21,4 +21,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 5,
   },
+  star_svg: {
+    textAlign: 'center',
+  },
 });

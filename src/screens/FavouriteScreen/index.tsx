@@ -1,5 +1,5 @@
 import { useFocusEffect } from '@react-navigation/native';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 
 import { FavoriteList } from '../../components';

@@ -38,7 +38,7 @@ const FavoriteList = ({ element }: { element: CatTypes[] }) => {
               name="delete"
               size={24}
               color="black"
-              style={{ textAlign: 'center', paddingTop: 20 }}
+              style={styles.delete_btn}
               onPress={() => deleteToFavorites(element.id)}
             />
           </View>
