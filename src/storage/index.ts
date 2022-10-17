@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RadioButtonProps } from 'react-native-radio-buttons-group';
 
 import { FAVORITE_LIST_STORAGE, SETTING_WEIGHT_ACTIVE_TYPE } from '../constants';
 import { CatTypes } from '../types/types';
@@ -22,7 +23,7 @@ export const getData = async () => {
   }
 };
 
-export const dataWeight = async (value: string) => {
+export const dataWeight = async (value: any) => {
   try {
     await AsyncStorage.setItem(SETTING_WEIGHT_ACTIVE_TYPE, JSON.stringify(value));
   } catch (error: any) {

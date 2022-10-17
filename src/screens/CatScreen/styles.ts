@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#20232a',
     borderRadius: 6,
-    backgroundColor: '#61dafb',
     color: '#20232a',
     textAlign: 'center',
     fontSize: 30,
@@ -20,7 +19,7 @@ export const styles = StyleSheet.create({
   },
 
   stretch: {
-    width: '88%',
+    width: '80%',
     height: 220,
     margin: 'auto',
     borderRadius: 8,

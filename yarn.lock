@@ -2016,6 +2016,41 @@
   resolved "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
+"@syncfusion/ej2-base@~20.3.47", "@syncfusion/ej2-base@~20.3.49":
+  version "20.3.49"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-base/-/ej2-base-20.3.49.tgz#3e697bc4da2ebedebc53d436201271be9e36413b"
+  integrity sha512-Sv1iPsF0CjKi77YSLHmp1S7fIXxC/vw/zthvc0H2riRed4YY6dBf2cgk5u5vX5ciVUfmHhehXlzV74wRwJFTlw==
+  dependencies:
+    "@syncfusion/ej2-icons" "~20.3.47"
+
+"@syncfusion/ej2-buttons@20.3.49":
+  version "20.3.49"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-buttons/-/ej2-buttons-20.3.49.tgz#49df58c5602e8f1523289923fa4760c975a7a605"
+  integrity sha512-4BuVdLEJpTNAWPwISMaqhyn9t344Gy33+2X0yKJfIEwP4UixJ1Vh7mjdKeQbIhwgjyLQYVW16sADjgGagrsqeQ==
+  dependencies:
+    "@syncfusion/ej2-base" "~20.3.49"
+
+"@syncfusion/ej2-icons@~20.3.47":
+  version "20.3.47"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-icons/-/ej2-icons-20.3.47.tgz#9223238cccfbeacdb914176e311a132660392e86"
+  integrity sha512-5uQEkkyene5mm/o1G7GMSJqmSrFOWFyuJdEIqzZYBzr+7hwlq6P919A/XR3eDBJSIz1wTN65bTQ9SCl4j/us1g==
+
+"@syncfusion/ej2-react-base@~20.3.47":
+  version "20.3.47"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-react-base/-/ej2-react-base-20.3.47.tgz#b61a236f66c702cc88e6f752910a1f50c4c70974"
+  integrity sha512-x1FNcohhHNvUfvoDVP/jvwmXz65LHP3hKRQIwPxaPby5lM1OzHUecWuIT+6JTc4dat++14c35EAbC6sqr1PrhA==
+  dependencies:
+    "@syncfusion/ej2-base" "~20.3.47"
+
+"@syncfusion/ej2-react-buttons@^20.3.49":
+  version "20.3.49"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-react-buttons/-/ej2-react-buttons-20.3.49.tgz#24fa4e3cc6e767e3260e4809d9fcbc02f0958e8c"
+  integrity sha512-j7MQMe1VPsSVUgWODIMHdCDh8bv4sDw0vIk12JIpuiaR2R45eO2u3FE3NpGNyfxQ+CzUPfdnbAd69X6Me4A2HA==
+  dependencies:
+    "@syncfusion/ej2-base" "~20.3.49"
+    "@syncfusion/ej2-buttons" "20.3.49"
+    "@syncfusion/ej2-react-base" "~20.3.47"
+
 "@types/graceful-fs@^4.1.2":
   version "4.1.5"
   resolved "https://registry.npmjs.org/@types/graceful-fs/-/graceful-fs-4.1.5.tgz"
@@ -5318,6 +5353,11 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
+lodash.isequal@4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
+
 lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
@@ -6620,6 +6660,13 @@ react-native-paper@^4.12.5:
     "@callstack/react-theme-provider" "^3.0.7"
     color "^3.1.2"
     react-native-iphone-x-helper "^1.3.1"
+
+react-native-radio-buttons-group@^2.2.11:
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/react-native-radio-buttons-group/-/react-native-radio-buttons-group-2.2.11.tgz#204cc00ce7b95800fba80800fdf960d35efff81d"
+  integrity sha512-dDvwkqrNLxNAv5CFYZmAnjrFCx9U4mW64iRqscrBQ6DQMPYj2P1wp9Z8Q9T28exiRn04JwZQRIyc1H0VInxn0w==
+  dependencies:
+    lodash.isequal "4.5.0"
 
 react-native-safe-area-context@^4.4.1:
   version "4.4.1"

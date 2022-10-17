@@ -56,7 +56,6 @@ const CatScreen = (props: any) => {
         infoCat?.breeds?.map((info, index) => (
           <View key={index} style={styles.cat_item_info}>
             <View>
-              <Text> CatScreen </Text>
               <View style={styles.cat_item_view}>
                 <Text style={{ marginRight: 10 }}>{info?.name}</Text>
                 <CountryFlag isoCode={info?.country_code} size={20} />

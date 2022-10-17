@@ -48,7 +48,11 @@ const HomeScreen: FC = () => {
   }, [favoriteList]);
 
   const keyExtractor = (item: CatTypes) => {
-    return item.id;
+    return (
+      item.id.toString() +
+      new Date().getTime().toString() +
+      Math.floor(Math.random() * Math.floor(new Date().getTime())).toString()
+    );
   };
 
   const fetchMoreData = () => {
@@ -85,8 +89,6 @@ const HomeScreen: FC = () => {
       <Text style={styles.textHeader}>CAT LIST</Text>
       <FlatList
         data={dataToRender}
-        maxToRenderPerBatch={5}
-        initialNumToRender={10}
         onEndReached={fetchMoreData}
         onEndReachedThreshold={0.5}
         renderItem={({ item }) => (
@@ -99,7 +101,7 @@ const HomeScreen: FC = () => {
             />
           </Pressable>
         )}
-        keyExtractor={keyExtractor}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );
