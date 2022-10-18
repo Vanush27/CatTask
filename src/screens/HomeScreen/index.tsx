@@ -83,6 +83,8 @@ const HomeScreen: FC = () => {
         data={dataToRender}
         onEndReached={fetchMoreData}
         onEndReachedThreshold={0.5}
+        initialNumToRender={10}
+        removeClippedSubviews
         renderItem={({ item }) => (
           <Pressable onPress={() => navigation.navigate('CatScreen', item)}>
             <CatCard

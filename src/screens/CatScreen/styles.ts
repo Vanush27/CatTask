@@ -1,36 +1,35 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  cat_item_info: {
-    marginTop: 6,
-    paddingVertical: 8,
-    borderWidth: 2,
-    borderColor: '#20232a',
-    borderRadius: 6,
-    color: '#20232a',
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
-  },
   cat_item_view: {
-    padding: 10,
-    justifyContent: 'flex-end',
+    justifyContent: 'space-around',
     flexDirection: 'row',
+    padding: 15,
   },
-
   stretch: {
-    width: '80%',
+    width: '100%',
     height: 220,
-    margin: 'auto',
     borderRadius: 8,
     resizeMode: 'cover',
   },
+  life_span: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
   cat_life_span: {
     flexDirection: 'row',
-    margin: 'auto',
     justifyContent: 'center',
   },
   text_padding: {
     padding: 10,
+    alignItems: 'center',
+  },
+  slider: { width: 150, height: 40, alignItems: 'center' },
+
+  weight: {
+    width: '50%',
+    padding: 10,
+    alignItems: 'flex-end',
+    textAlign: 'center',
   },
 });

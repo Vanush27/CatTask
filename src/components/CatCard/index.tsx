@@ -46,7 +46,7 @@ const CatCard = ({
       </View>
       <View style={styles.addToFavoritesWrapper}>
         {isDisabled ? (
-          <Button title="See Favorites" onPress={() => navigation.navigate('Favourite')} />
+          <Button title="See Favorites" onPress={() => navigation.navigate('FavouriteScreen')} />
         ) : (
           <Button title="Add to favorites" onPress={() => addToFavorites(item.id)} />
         )}

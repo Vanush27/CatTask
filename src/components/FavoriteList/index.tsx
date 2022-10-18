@@ -9,7 +9,7 @@ import { CatTypes } from '../../types/types';
 import { styles } from './styles';
 
 const FavoriteList = ({ element }: { element: CatTypes[] }) => {
-  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase, 'Home'>>();
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase, 'HomeScreen'>>();
 
   const deleteToFavorites = async (id: string) => {
     try {

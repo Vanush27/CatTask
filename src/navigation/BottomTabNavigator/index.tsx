@@ -20,12 +20,13 @@ const BottomTabNavigator = () => (
     />
 
     <BottomTab.Screen
-      name="Favourite"
+      name="FavouriteScreen"
       component={FavouriteScreen}
       options={({ navigation }) => ({
         tabBarIcon: ({ focused, color }) => (
           <AntDesign name="staro" size={24} color={focused ? 'green' : 'black'} />
         ),
+        title: 'Favourite',
         headerShown: false,
         tabBarActiveTintColor: '#008000',
       })}
@@ -34,18 +35,21 @@ const BottomTabNavigator = () => (
       name="CatScreen"
       component={CatScreen}
       options={({ route }) => ({
-        title: '',
+        title: 'Cat Information',
+        headerTitleStyle: { color: '#ccc' },
+        headerStyle: { backgroundColor: '#008000' },
         tabBarVisible: false,
         tabBarButton: () => '',
       })}
     />
     <BottomTab.Screen
-      name="Setting"
+      name="SettingScreen"
       component={SettingScreen}
       options={({ navigation }) => ({
         tabBarLabel: 'Setting',
         tabBarActiveTintColor: '#008000',
         headerShown: false,
+        title: 'Setting',
         tabBarIcon: ({ focused, color }) => (
           <AntDesign name="setting" size={24} color={focused ? 'green' : 'black'} />
         ),
