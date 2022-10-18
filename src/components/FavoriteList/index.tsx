@@ -9,7 +9,7 @@ import { CatTypes } from '../../types/types';
 import { styles } from './styles';
 
 const FavoriteList = ({ element }: { element: CatTypes[] }) => {
-  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase, 'Home'>>();
+  const navigation = useNavigation<NativeStackNavigationProp<ParamListBase, 'HomeScreen'>>();
 
   const deleteToFavorites = async (id: string) => {
     try {
@@ -24,7 +24,7 @@ const FavoriteList = ({ element }: { element: CatTypes[] }) => {
     <>
       {element?.map((element: CatTypes) => {
         return (
-          <View key={element.id + element.url} style={styles.favorite_container}>
+          <View key={element.id} style={styles.favorite_container}>
             <Pressable onPress={() => navigation.navigate('CatScreen', element)}>
               <Image
                 style={styles.stretch}
@@ -38,7 +38,7 @@ const FavoriteList = ({ element }: { element: CatTypes[] }) => {
               name="delete"
               size={24}
               color="black"
-              style={{ textAlign: 'center' }}
+              style={styles.delete_btn}
               onPress={() => deleteToFavorites(element.id)}
             />
           </View>

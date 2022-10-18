@@ -35,7 +35,7 @@ const CatCard = ({
 
   return (
     <View style={styles.item}>
-      <View>
+      <View style={styles.image_cat}>
         <Image
           resizeMode="contain"
           style={styles.stretch}
@@ -46,7 +46,7 @@ const CatCard = ({
       </View>
       <View style={styles.addToFavoritesWrapper}>
         {isDisabled ? (
-          <Button title="See Favorites" onPress={() => navigation.navigate('Favourite')} />
+          <Button title="See Favorites" onPress={() => navigation.navigate('FavouriteScreen')} />
         ) : (
           <Button title="Add to favorites" onPress={() => addToFavorites(item.id)} />
         )}
@@ -55,7 +55,7 @@ const CatCard = ({
           name={isDisabled ? 'star' : 'staro'}
           size={24}
           color="black"
-          style={{ textAlign: 'center' }}
+          style={styles.star_svg}
           onPress={() => setIsClick(!isClick)}
         />
       </View>

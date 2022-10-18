@@ -1,4 +1,4 @@
-import { CFormRange } from '@coreui/react';
+import Slider from '@react-native-community/slider';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Text, View, Image } from 'react-native';
@@ -49,48 +49,50 @@ const CatScreen = (props: any) => {
   }, []);
 
   return (
-    <>
+    <View>
       {loading ? (
         <Text>Loading...</Text>
       ) : infoCat?.breeds ? (
         infoCat?.breeds?.map((info, index) => (
-          <View key={index} style={styles.cat_item_info}>
+          <View key={index}>
             <View>
-              <Text> CatScreen </Text>
               <View style={styles.cat_item_view}>
                 <Text style={{ marginRight: 10 }}>{info?.name}</Text>
                 <CountryFlag isoCode={info?.country_code} size={20} />
               </View>
-              <Image
-                style={styles.stretch}
-                source={{
-                  uri: `${infoCat?.url}`,
-                }}
-              />
-              <Text style={styles.text_padding}> {info?.description}</Text>
-              <StarRating activeStars={info?.energy_level} />
-              <Text style={{ padding: 3 }}> life span</Text>
+            </View>
+            <Image
+              style={styles.stretch}
+              source={{
+                uri: `${infoCat?.url}`,
+              }}
+            />
+            <Text style={styles.text_padding}> {info?.description}</Text>
+            <StarRating activeStars={info?.energy_level} />
+            <View style={styles.life_span}>
+              <Text style={styles.text_padding}> Life Span</Text>
               <View style={styles.cat_life_span}>
-                <Text>0</Text>
-                <CFormRange
-                  onChange={() => console.log('CFormRange')}
-                  id="customRange1"
+                <Text style={styles.text_padding}>0</Text>
+                <Slider
+                  style={styles.slider}
+                  minimumValue={0}
+                  maximumValue={20}
+                  minimumTrackTintColor="#6ceebf"
+                  maximumTrackTintColor="#000000"
                   value={Math.ceil(
                     Number(info?.life_span.replace('-', '').replace('  ', '')) / 100
                   )}
-                  min={0}
-                  max={20}
-                  steps={0}
+                  disabled
                 />
-                <Text>20</Text>
+                <Text style={styles.text_padding}>20</Text>
               </View>
-
-              {weightType && weightType === 'metric' ? (
-                <Text style={styles.text_padding}>metric = {info?.weight?.metric}</Text>
-              ) : (
-                <Text style={styles.text_padding}>imperial = {info?.weight?.imperial}</Text>
-              )}
             </View>
+
+            {weightType && weightType === 'metric' ? (
+              <Text style={styles.weight}>Metric = {info?.weight?.metric} kg</Text>
+            ) : (
+              <Text style={styles.weight}>Imperial = {info?.weight?.imperial} pounds</Text>
+            )}
           </View>
         ))
       ) : (
@@ -98,7 +100,7 @@ const CatScreen = (props: any) => {
           <Text>No information for breeds</Text>
         </View>
       )}
-    </>
+    </View>
   );
 };
 

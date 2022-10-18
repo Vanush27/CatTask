@@ -47,10 +47,6 @@ const HomeScreen: FC = () => {
     getFavList();
   }, [favoriteList]);
 
-  const keyExtractor = (item: CatTypes) => {
-    return item.id;
-  };
-
   const fetchMoreData = () => {
     setPage(page + 1);
   };
@@ -85,10 +81,10 @@ const HomeScreen: FC = () => {
       <Text style={styles.textHeader}>CAT LIST</Text>
       <FlatList
         data={dataToRender}
-        maxToRenderPerBatch={5}
-        initialNumToRender={10}
         onEndReached={fetchMoreData}
         onEndReachedThreshold={0.5}
+        initialNumToRender={10}
+        removeClippedSubviews
         renderItem={({ item }) => (
           <Pressable onPress={() => navigation.navigate('CatScreen', item)}>
             <CatCard
@@ -99,7 +95,7 @@ const HomeScreen: FC = () => {
             />
           </Pressable>
         )}
-        keyExtractor={keyExtractor}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );
